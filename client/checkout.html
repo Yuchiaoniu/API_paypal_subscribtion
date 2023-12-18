@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css"
+    href="https://www.paypalobjects.com/webstatic/en_US/developer/docs/css/cardfields.css" />
+  <title>PayPal JS SDK Advanced Integration - Checkout Flow</title>
+</head>
+
+<body>
+  <div id="paypal-button-container" class="paypal-button-container"></div>
+  <div id="card-form" class="card_container">
+    <div id="card-name-field-container"></div>
+    <div id="card-number-field-container"></div>
+    <div id="card-expiry-field-container"></div>
+    <div id="card-cvv-field-container"></div>
+    <button id="multi-card-field-button" type="button">Pay now with Card</button>
+  </div>
+  <p id="result-message"></p>
+  <!-- Replace the "test" client-id value with your client-id -->
+  <script
+    src="https://www.paypal.com/sdk/js?client-id=AXZWRCdsmXUXMBMh4u_eILoxcKPDW4YVC3gpOdlk-Hksui6H-B3hoj0I4uB1liMbinsQW71kwAzOJOrO&components=buttons&vault=true&intent=subscription&enable-funding=paylater,card"
+    data-sdk-integration-source="integrationbuilder_sc"></script>
+  <script src="./checkout.js"></script>
+</body>
+
+</html>
