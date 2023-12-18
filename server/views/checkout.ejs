@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css"
+        href="https://www.paypalobjects.com/webstatic/en_US/developer/docs/css/cardfields.css" />
+    <title>PayPal JS SDK Advanced Integration - Checkout Flow</title>
+    <style>
+        .main-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+        }
+
+        .background {
+            background-image: url(sub.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 50%;
+            height: 70vh;
+        }
+
+        .text {
+            width: 60%;
+            border-radius: 5px;
+            border: 0.5px solid;
+            border-color: darkkhaki;
+            margin: 5px 0px;
+            padding: 5px 5px;
+        }
+
+        #paypal-button-container {
+            z-index: 0 !important;
+            position: relative !important;
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <script
+        src="https://www.paypal.com/sdk/js?components=buttons,card-fields&client-id=AXZWRCdsmXUXMBMh4u_eILoxcKPDW4YVC3gpOdlk-Hksui6H-B3hoj0I4uB1liMbinsQW71kwAzOJOrO&vault=true&intent=subscription"></script>
+    </script>
+    <!-- <img src="/sub.png"> -->
+    <div class="main-container">
+
+        <div class="background">
+
+        </div>
+        <div class="text">
+            <p id="email-display">Hi, <%= email %>
+            </p>
+            <p id="file-content">
+                <%= fileContent %>
+            </p><br>1.click paypal button<br>
+            2.log-in your paypal account, and subscribe<br>
+            3.if you not set up credit card in your paypal account yet, please login to paypal official site to set
+            up.<br>
+            P.S. There’s no need to enter your credit card information through our service.
+        </div>
+        <div id="paypal-button-container"></div>
+    </div>
+
+    <script>
+        var email = '<%= email %>';
+        var clientId = '<%= clientId %>';
+        var fileContent = '<%= fileContent %>';
+        paypal.Buttons({
+            createSubscription: function (data, actions) {
+                if (email !== fileContent) {
+                    alert('Email and file content do not match. Order cannot be created.');
+                    return;
+                }
+                return actions.subscription.create({
+                    'plan_id': 'P-03B79304PX9475124MV2XL7I', // Creates the subscription
+                    'custom_id': fileContent  // Add the custom_id here
+                });
+            },
+            onApprove: function (data, actions) {
+                alert('You have successfully subscribed to ' + data.subscriptionID); // Optional message given to subscriber
+            }
+        }).render('#paypal-button-container'); // Renders the PayPal button
+    </script>
+
+
+</body>
