@@ -48,7 +48,7 @@
                 background-repeat: no-repeat;
                 background-position: center;
                 width: 100%;
-                height: 40vh;
+                height: 70vh;
             }
 
             .text {
@@ -59,13 +59,33 @@
                 margin: 5px 0px;
                 padding: 5px 5px;
             }
+
+            @media screen and (max-width: 1000px) {
+                .background {
+                    background-image: url(sub.png);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    width: 100%;
+                    height: 40vh;
+                }
+
+                .text {
+                    width: 100%;
+                    border-radius: 5px;
+                    border: 0.5px solid;
+                    border-color: darkkhaki;
+                    margin: 5px 0px;
+                    padding: 5px 5px;
+                }
+            }
         }
     </style>
 </head>
 
 <body>
     <script
-        src="https://www.paypal.com/sdk/js?components=buttons,card-fields&client-id=Af0qVHnly1tmyjoCQju6WxT_iA2g0xp_wrDF4Vje33x2aWTMFWv86_yCmft3u8Vuh2MTRxVq-8lx0RVm&vault=true&intent=subscription"></script>
+        src="https://www.paypal.com/sdk/js?components=buttons,card-fields&client-id=AXZWRCdsmXUXMBMh4u_eILoxcKPDW4YVC3gpOdlk-Hksui6H-B3hoj0I4uB1liMbinsQW71kwAzOJOrO&vault=true&intent=subscription"></script>
     </script>
     <!-- <img src="/sub.png"> -->
     <div class="main-container">
@@ -78,12 +98,12 @@
             </p>
             <p style="display:none;" id="file-content">
                 <%= fileContent %>
-            </p>1.click paypal button<br>
-            2.log-in your paypal account, and subscribe or pay through credit card directly<br>
-            3.We forbiden any kind of crime content. if do so, we will hand in relative official institutions<br>
-            4.if you pay through credit card directly, and want to cancel your subscribe, please contact
-            scholar.ovh@gmail.com<br>
-            5.if you pay through paypal, you can cancel your subscribe through your paypal account.
+            </p>1.按下paypal按鈕<br>
+            2.登入您的paypal帳戶，直接訂閱或透過信用卡支付<br>
+            3.我們禁止任何形式的犯罪​​內容。若有相關情形，我們將提交相關官方機構<br>
+            4.如果您直接透過信用卡支付後，希望取消訂閱，請聯繫
+            searchfor.ovh@gmail.com<br>
+            5.如果您透過PayPal付款，您可以透過您的PayPal帳戶取消訂閱。
         </div>
         <div id="paypal-button-container"></div>
     </div>
@@ -99,7 +119,7 @@
                     return;
                 }
                 return actions.subscription.create({
-                    'plan_id': 'P-81U34214WK443262FMWFJTSQ', // Creates the subscription
+                    'plan_id': 'P-03B79304PX9475124MV2XL7I', // Creates the subscription
                     'custom_id': fileContent  // Add the custom_id here
                 });
             },
@@ -109,7 +129,7 @@
                 // Create a form
                 var form = document.createElement('form');
                 form.method = 'POST';
-                form.action = 'https://br.searchfor.ovh/page/paycheck.php';
+                form.action = 'https://br.searchfor.ovh/searchfor_test_1/page/paycheck.php';
 
 
                 // Create hidden inputs for brandName, email, and subscriptionID

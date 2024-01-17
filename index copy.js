@@ -81,28 +81,22 @@ app.get("/checkout", async (req, res) => {
   try {
     var email = req.query.email; // 從查詢參數中獲取email
     var brandName = req.query.brandName; // 從查詢參數中獲取brandName
-    var iftest = req.query.mode;
     // 將email寫入到一個.txt文件中
-    fs.writeFileSync(`${brandName}.txt`, email);
-
+    fs.writeFileSync(`${email}.txt`, email);
+    if (req.headers.referer === 'http://br.searchfor/edit/' + brandName + '.html') {
+      // 如果是，則將email寫入到一個.txt文件中
+      fs.writeFileSync(`${email}.txt`, email);
+    }
     // 建立文件的路徑
-    var filePath = path.join(__dirname, `${brandName}.txt`);
+    var filePath = path.join(__dirname, `${email}.txt`);
 
     // 讀取文件的內容
     var fileContent = fs.readFileSync(filePath, 'utf8');
-    if (iftest === '0') {
-      res.render("checkout.ejs", {
-        email: email,
-        brandName: brandName,  // 將brandName傳遞給EJS模板
-        fileContent: fileContent  // 將文件內容傳遞給EJS模板
-      });
-    } else if (iftest === '1') {
-      res.render("checkout_test.ejs", {
-        email: email,
-        brandName: brandName,  // 將brandName傳遞給EJS模板
-        fileContent: fileContent  // 將文件內容傳遞給EJS模板
-      });
-    }
+    res.render("checkout.ejs", {
+      email: email,
+      brandName: brandName,  // 將brandName傳遞給EJS模板
+      fileContent: fileContent  // 將文件內容傳遞給EJS模板
+    });
   } catch (err) {
     res.status(500).send(err.message);
   }

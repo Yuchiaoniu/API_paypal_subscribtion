@@ -40,32 +40,12 @@
             position: relative !important;
             width: 50%;
         }
-
-        @media screen and (max-width: 1000px) {
-            .background {
-                background-image: url(sub.png);
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center;
-                width: 100%;
-                height: 40vh;
-            }
-
-            .text {
-                width: 100%;
-                border-radius: 5px;
-                border: 0.5px solid;
-                border-color: darkkhaki;
-                margin: 5px 0px;
-                padding: 5px 5px;
-            }
-        }
     </style>
 </head>
 
 <body>
     <script
-        src="https://www.paypal.com/sdk/js?components=buttons,card-fields&client-id=Af0qVHnly1tmyjoCQju6WxT_iA2g0xp_wrDF4Vje33x2aWTMFWv86_yCmft3u8Vuh2MTRxVq-8lx0RVm&vault=true&intent=subscription"></script>
+        src="https://www.paypal.com/sdk/js?components=buttons,card-fields&client-id=AXZWRCdsmXUXMBMh4u_eILoxcKPDW4YVC3gpOdlk-Hksui6H-B3hoj0I4uB1liMbinsQW71kwAzOJOrO&vault=true&intent=subscription"></script>
     </script>
     <!-- <img src="/sub.png"> -->
     <div class="main-container">
@@ -76,13 +56,13 @@
         <div class="text">
             <p id="email-display">Hi, <%= email %>
             </p>
-            <p style="display:none;" id="file-content">
+            <p id="file-content">
                 <%= fileContent %>
-            </p>1.click paypal button<br>
+            </p><br>1.click paypal button<br>
             2.log-in your paypal account, and subscribe or pay through credit card directly<br>
-            3.We forbiden any kind of crime content. if do so, we will hand in relative official institutions<br>
+            3.We forbiden any kind of crime content. if do so, we will hand in relative Official institutions<br>
             4.if you pay through credit card directly, and want to cancel your subscribe, please contact
-            scholar.ovh@gmail.com<br>
+            scholar.ovh@gmail.com
             5.if you pay through paypal, you can cancel your subscribe through your paypal account.
         </div>
         <div id="paypal-button-container"></div>
@@ -90,8 +70,10 @@
 
     <script>
         var email = '<%= email %>';
+        var clientId = '<%= clientId %>';
         var fileContent = '<%= fileContent %>';
         var brandName = '<%= brandName %>';  // 新增的變數
+
         paypal.Buttons({
             createSubscription: function (data, actions) {
                 if (email !== fileContent) {
@@ -99,7 +81,7 @@
                     return;
                 }
                 return actions.subscription.create({
-                    'plan_id': 'P-81U34214WK443262FMWFJTSQ', // Creates the subscription
+                    'plan_id': 'P-03B79304PX9475124MV2XL7I', // Creates the subscription
                     'custom_id': fileContent  // Add the custom_id here
                 });
             },
@@ -109,7 +91,7 @@
                 // Create a form
                 var form = document.createElement('form');
                 form.method = 'POST';
-                form.action = 'https://br.searchfor.ovh/page/paycheck.php';
+                form.action = 'https://www.searchfor.ovh/page/paycheck.php';
 
 
                 // Create hidden inputs for brandName, email, and subscriptionID
@@ -132,10 +114,6 @@
                 form.appendChild(inputBrandName);
                 form.appendChild(inputEmail);
                 form.appendChild(inputSubscriptionID);
-
-                console.log(brandName);
-                console.log(email);
-                console.log(data.subscriptionID);
 
                 // Add the form to the body (this is necessary for the form to be submitted)
                 document.body.appendChild(form);
