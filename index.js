@@ -80,6 +80,7 @@ app.use(express.json());
 app.get("/checkout", async (req, res) => {
   try {
     var email = req.query.email; // 從查詢參數中獲取email
+<<<<<<< HEAD
     var brandName = req.query.brandName; // 從查詢參數中獲取brandName
     var iftest = req.query.mode;
     // 將email寫入到一個.txt文件中
@@ -103,12 +104,33 @@ app.get("/checkout", async (req, res) => {
         fileContent: fileContent  // 將文件內容傳遞給EJS模板
       });
     }
+=======
+    // 將email寫入到一個.txt文件中
+    fs.writeFileSync(`${email}.txt`, email);
+    if (req.headers.referer === 'http://localhost/wbloom-2/index.html') {
+      // 如果是，則將email寫入到一個.txt文件中
+      fs.writeFileSync(`${email}.txt`, email);
+    }
+    // 建立文件的路徑
+    var filePath = path.join(__dirname, `${email}.txt`);
+
+    // 讀取文件的內容
+    var fileContent = fs.readFileSync(filePath, 'utf8');
+    res.render("checkout.ejs", {
+      clientId: PAYPAL_CLIENT_ID,
+      email: email,
+      fileContent: fileContent  // 將文件內容傳遞給EJS模板
+    });
+>>>>>>> 46a26dba0097c6f1716b5b03a587801e0530a4ad
   } catch (err) {
     res.status(500).send(err.message);
   }
 });
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 46a26dba0097c6f1716b5b03a587801e0530a4ad
 app.listen(PORT, () => {
   console.log(`Node server listening at http://localhost:${PORT}/`);
 });
