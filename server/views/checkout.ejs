@@ -40,7 +40,6 @@
             position: relative !important;
             width: 50%;
         }
-<<<<<<< HEAD
 
         @media screen and (max-width: 1000px) {
             .background {
@@ -61,18 +60,12 @@
                 padding: 5px 5px;
             }
         }
-=======
->>>>>>> 46a26dba0097c6f1716b5b03a587801e0530a4ad
     </style>
 </head>
 
 <body>
     <script
-<<<<<<< HEAD
-        src="https://www.paypal.com/sdk/js?components=buttons,card-fields&client-id=Af0qVHnly1tmyjoCQju6WxT_iA2g0xp_wrDF4Vje33x2aWTMFWv86_yCmft3u8Vuh2MTRxVq-8lx0RVm&vault=true&intent=subscription"></script>
-=======
         src="https://www.paypal.com/sdk/js?components=buttons,card-fields&client-id=客戶在後台建立app後的clienId&vault=true&intent=subscription"></script>
->>>>>>> 46a26dba0097c6f1716b5b03a587801e0530a4ad
     </script>
     <!-- <img src="/sub.png"> -->
     <div class="main-container">
@@ -83,7 +76,6 @@
         <div class="text">
             <p id="email-display">Hi, <%= email %>
             </p>
-<<<<<<< HEAD
             <p style="display:none;" id="file-content">
                 <%= fileContent %>
             </p>1.click paypal button<br>
@@ -92,28 +84,14 @@
             4.if you pay through credit card directly, and want to cancel your subscribe, please contact
             scholar.ovh@gmail.com<br>
             5.if you pay through paypal, you can cancel your subscribe through your paypal account.
-=======
-            <p id="file-content">
-                <%= fileContent %>
-            </p><br>1.click paypal button<br>
-            2.log-in your paypal account, and subscribe<br>
-            3.if you not set up credit card in your paypal account yet, please login to paypal official site to set
-            up.<br>
-            P.S. There’s no need to enter your credit card information through our service.
->>>>>>> 46a26dba0097c6f1716b5b03a587801e0530a4ad
         </div>
         <div id="paypal-button-container"></div>
     </div>
 
     <script>
         var email = '<%= email %>';
-<<<<<<< HEAD
         var fileContent = '<%= fileContent %>';
         var brandName = '<%= brandName %>';  // 新增的變數
-=======
-        var clientId = '<%= clientId %>';
-        var fileContent = '<%= fileContent %>';
->>>>>>> 46a26dba0097c6f1716b5b03a587801e0530a4ad
         paypal.Buttons({
             createSubscription: function (data, actions) {
                 if (email !== fileContent) {
@@ -121,17 +99,12 @@
                     return;
                 }
                 return actions.subscription.create({
-<<<<<<< HEAD
-                    'plan_id': 'P-81U34214WK443262FMWFJTSQ', // Creates the subscription
-=======
                     'plan_id': '在後台或透過curl建立的訂閱計畫的id', // Creates the subscription
->>>>>>> 46a26dba0097c6f1716b5b03a587801e0530a4ad
                     'custom_id': fileContent  // Add the custom_id here
                 });
             },
             onApprove: function (data, actions) {
                 alert('You have successfully subscribed to ' + data.subscriptionID); // Optional message given to subscriber
-<<<<<<< HEAD
 
                 // Create a form
                 var form = document.createElement('form');
@@ -177,11 +150,3 @@
 
 
 </body>
-=======
-            }
-        }).render('#paypal-button-container'); // Renders the PayPal button
-    </script>
-
-
-</body>
->>>>>>> 46a26dba0097c6f1716b5b03a587801e0530a4ad
