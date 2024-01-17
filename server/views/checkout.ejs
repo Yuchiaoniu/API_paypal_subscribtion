@@ -45,7 +45,7 @@
 
 <body>
     <script
-        src="https://www.paypal.com/sdk/js?components=buttons,card-fields&client-id=AXZWRCdsmXUXMBMh4u_eILoxcKPDW4YVC3gpOdlk-Hksui6H-B3hoj0I4uB1liMbinsQW71kwAzOJOrO&vault=true&intent=subscription"></script>
+        src="https://www.paypal.com/sdk/js?components=buttons,card-fields&client-id=客戶在後台建立app後的clienId&vault=true&intent=subscription"></script>
     </script>
     <!-- <img src="/sub.png"> -->
     <div class="main-container">
@@ -78,7 +78,7 @@
                     return;
                 }
                 return actions.subscription.create({
-                    'plan_id': 'P-03B79304PX9475124MV2XL7I', // Creates the subscription
+                    'plan_id': '在後台或透過curl建立的訂閱計畫的id', // Creates the subscription
                     'custom_id': fileContent  // Add the custom_id here
                 });
             },
