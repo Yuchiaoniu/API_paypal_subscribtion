@@ -1,4 +1,4 @@
-#paypal訂閱方案的api#
+#paypal訂閱方案的api
 
 以下為自訂內容:
 在根目錄的index.js接收網頁傳送的get值
